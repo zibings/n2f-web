@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>N2F Web-PHP-Legacy</Name>
+    <ProjectGuid>{81cf42da-6634-44a9-9cea-8225080513fd}</ProjectGuid>
+    <RootNamespace>N2F Web-PHP-Legacy</RootNamespace>
+    <OutputType>Library</OutputType>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="modules\error\tpl\default\index.tpl" />
+    <Compile Include="modules\error\index.php" />
+    <Compile Include="modules\error\page.php" />
+    <Compile Include="modules\main\tpl\default\footer.tpl" />
+    <Compile Include="modules\main\tpl\default\header.tpl" />
+    <Compile Include="modules\main\tpl\default\index.tpl" />
+    <Compile Include="modules\main\index.php" />
+    <Compile Include="modules\main\page.php" />
+    <Compile Include="modules\main\sys.ext.php" />
+    <Compile Include="modules\resources\tpl\default\index.tpl" />
+    <Compile Include="modules\resources\index.php" />
+    <Compile Include="modules\resources\page.php" />
+    <Compile Include="modules\wheretostart\tpl\default\index.tpl" />
+    <Compile Include="modules\wheretostart\index.php" />
+    <Compile Include="modules\wheretostart\page.php" />
+    <Compile Include="resources\images\default\content.jpg" />
+    <Compile Include="resources\images\default\contenth2.jpg" />
+    <Compile Include="resources\images\default\firefox-gray.jpg" />
+    <Compile Include="resources\images\default\footer.jpg" />
+    <Compile Include="resources\images\default\header.jpg" />
+    <Compile Include="resources\images\default\menu.jpg" />
+    <Compile Include="resources\images\default\menuover.png" />
+    <Compile Include="resources\images\default\n2f_poweredby.gif" />
+    <Compile Include="resources\images\default\php5-power-micro.png" />
+    <Compile Include="resources\images\default\sidebarh3.jpg" />
+    <Compile Include="resources\stylesheets\default\style.css" />
+    <Compile Include="system\classes\debug.cls.php" />
+    <Compile Include="system\classes\events.cls.php" />
+    <Compile Include="system\classes\n2f.cls.php" />
+    <Compile Include="system\extensions\n2f_cache\config.ext.php" />
+    <Compile Include="system\extensions\n2f_database\config.ext.php" />
+    <Compile Include="system\extensions\n2f_database\constants.ext.php" />
+    <Compile Include="system\extensions\n2f_database\lang.ext.php" />
+    <Compile Include="system\extensions\n2f_database\mysql.ext.php" />
+    <Compile Include="system\extensions\n2f_database\mysqli.ext.php" />
+    <Compile Include="system\extensions\n2f_database\pgsql.ext.php" />
+    <Compile Include="system\extensions\n2f_database\sqlite.ext.php" />
+    <Compile Include="system\extensions\n2f_session\config.ext.php" />
+    <Compile Include="system\extensions\n2f_template\config.ext.php" />
+    <Compile Include="system\extensions\n2f_template\constants.ext.php" />
+    <Compile Include="system\extensions\n2f_template\dynamic.ext.php" />
+    <Compile Include="system\extensions\n2f_template\lang.ext.php" />
+    <Compile Include="system\extensions\n2f_template\static.ext.php" />
+    <Compile Include="system\extensions\n2f_cache.ext.php" />
+    <Compile Include="system\extensions\n2f_database.ext.php" />
+    <Compile Include="system\extensions\n2f_paginate.ext.php" />
+    <Compile Include="system\extensions\n2f_return.ext.php" />
+    <Compile Include="system\extensions\n2f_session.ext.php" />
+    <Compile Include="system\extensions\n2f_template.ext.php" />
+    <Compile Include="system\includes\constants.inc.php" />
+    <Compile Include="system\includes\strings.inc.php" />
+    <Compile Include="system\includes\utilities.inc.php" />
+    <Compile Include="system\config.inc.php" />
+    <Compile Include="system\core.inc.php" />
+    <Compile Include="changelist.txt" />
+    <Compile Include="credits.txt" />
+    <Compile Include="index.php" />
+    <Compile Include="license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="modules\error\tpl\default" />
+    <Folder Include="modules\error\tpl" />
+    <Folder Include="modules\error" />
+    <Folder Include="modules\main\tpl\default" />
+    <Folder Include="modules\main\tpl" />
+    <Folder Include="modules\main" />
+    <Folder Include="modules\resources\tpl\default" />
+    <Folder Include="modules\resources\tpl" />
+    <Folder Include="modules\resources" />
+    <Folder Include="modules\wheretostart\tpl\default" />
+    <Folder Include="modules\wheretostart\tpl" />
+    <Folder Include="modules\wheretostart" />
+    <Folder Include="modules" />
+    <Folder Include="resources\images\default" />
+    <Folder Include="resources\images" />
+    <Folder Include="resources\stylesheets\default" />
+    <Folder Include="resources\stylesheets" />
+    <Folder Include="resources" />
+    <Folder Include="system\classes" />
+    <Folder Include="system\extensions\n2f_cache" />
+    <Folder Include="system\extensions\n2f_database" />
+    <Folder Include="system\extensions\n2f_session" />
+    <Folder Include="system\extensions\n2f_template" />
+    <Folder Include="system\extensions" />
+    <Folder Include="system\includes" />
+    <Folder Include="system" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\n2framework\PHP\N2F 2.0.phpproj">
+      <Name>N2F 2.0</Name>
+      <Project>{9e7e51d0-d71b-47b5-a649-c963c63513fc}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
