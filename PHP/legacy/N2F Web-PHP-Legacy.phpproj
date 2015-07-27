@@ -30,6 +30,7 @@
     <Compile Include="modules\wheretostart\tpl\default\index.tpl" />
     <Compile Include="modules\wheretostart\index.php" />
     <Compile Include="modules\wheretostart\page.php" />
+    <Compile Include="N2fWebLegacy.ext.php" />
     <Compile Include="resources\images\default\content.jpg" />
     <Compile Include="resources\images\default\contenth2.jpg" />
     <Compile Include="resources\images\default\firefox-gray.jpg" />
@@ -106,5 +107,8 @@
       <Project>{9e7e51d0-d71b-47b5-a649-c963c63513fc}</Project>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="N2fWebLegacy.cfg" />
   </ItemGroup>
 </Project>
