@@ -73,6 +73,8 @@
     <Compile Include="changelist.txt" />
     <Compile Include="credits.txt" />
     <Compile Include="license.txt" />
+    <Compile Include="templates\module\index.php" />
+    <Compile Include="templates\module\page.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="modules\error\tpl\default" />
@@ -88,6 +90,7 @@
     <Folder Include="modules\wheretostart\tpl" />
     <Folder Include="modules\wheretostart" />
     <Folder Include="modules" />
+    <Folder Include="templates\" />
     <Folder Include="resources\images\default" />
     <Folder Include="resources\images" />
     <Folder Include="resources\stylesheets\default" />
@@ -100,6 +103,10 @@
     <Folder Include="extensions\n2f_template\" />
     <Folder Include="extensions\" />
     <Folder Include="includes\" />
+    <Folder Include="templates\module\" />
+    <Folder Include="templates\extension\" />
+    <Folder Include="templates\module\tpl\" />
+    <Folder Include="templates\module\tpl\default\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\n2framework\PHP\N2F 2.0.phpproj">
@@ -110,5 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="N2fWebLegacy.cfg" />
+    <Content Include="templates\module\tpl\default\index.tpl" />
   </ItemGroup>
 </Project>
