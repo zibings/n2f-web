@@ -141,7 +141,7 @@
 				return;
 			}
 
-			/* @var \N2f\N2f $Sender */
+			/** @var \N2f\N2f $Sender */
 
 			if (!$Sender->GetFileHelper()->FolderExists("~/modules/")) {
 				$Sender->GetConsoleHelper()->PutLine();
@@ -156,7 +156,7 @@
 			if ($Dispatch instanceof N2f\JsonDispatch) {
 				$_REQUEST['nret'] = 'data';
 			} else if ($Dispatch instanceof N2f\CliDispatch) {
-				/* @var \N2f\CliDispatch $Dispatch */
+				/** @var \N2f\CliDispatch $Dispatch */
 
 				$Sender->GetConsoleHelper()->PutLine();
 				$Sender->GetConsoleHelper()->PutLine("CLI mode not supported with n2f-web legacy.");
@@ -208,7 +208,18 @@
 				return;
 			}
 
+			/** @var \N2f\GenerateDispatch $Dispatch */
 
+			$Fh = $Dispatch->GetFileHelper();
+			$Type = $Dispatch->GetEntityType();
+			$Params = $Dispatch->GetAssocParameters();
+
+			if (stripos($Type, 'N2fWebLegacy.') === false || !array_key_exists('name', $Params)) {
+				return;
+			}
+
+			print_r($Params);
+			$Dispatch->Consume();
 
 			return;
 		}
