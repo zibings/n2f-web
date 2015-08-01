@@ -88,7 +88,7 @@
 
 				if ($ResCopy->IsGud()) {
 					if ($DoVerbose) {
-						$Results = $ModCopy->GetResults();
+						$Results = $ResCopy->GetResults();
 						$Ch->PutLine();
 
 						if (is_array($Results)) {
@@ -105,7 +105,7 @@
 					if ($DoVerbose) {
 						$Ch->PutLine();
 
-						foreach (array_values($ModCopy->GetMessages()) as $Msg) {
+						foreach (array_values($ResCopy->GetMessages()) as $Msg) {
 							$Ch->PutLine($Msg);
 						}
 					}
