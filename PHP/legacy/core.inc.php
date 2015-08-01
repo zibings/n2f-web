@@ -15,13 +15,13 @@
 	 */
 
 	// Pull core files into system
-	require(N2F_REL_PATH.'system/includes/constants.inc.php');
-	require(N2F_REL_PATH.'system/includes/utilities.inc.php');
-	require(N2F_REL_PATH.'system/includes/strings.inc.php');
-	require(N2F_REL_PATH.'system/classes/events.cls.php');
-	require(N2F_REL_PATH.'system/classes/debug.cls.php');
-	require(N2F_REL_PATH.'system/classes/n2f.cls.php');
-	require(N2F_REL_PATH.'system/config.inc.php');
+	require(N2F_REL_PATH.'includes/constants.inc.php');
+	require(N2F_REL_PATH.'includes/utilities.inc.php');
+	require(N2F_REL_PATH.'includes/strings.inc.php');
+	require(N2F_REL_PATH.'classes/events.cls.php');
+	require(N2F_REL_PATH.'classes/debug.cls.php');
+	require(N2F_REL_PATH.'classes/n2f.cls.php');
+	require(N2F_REL_PATH.'config.inc.php');
 
 	// Put path variables into configuration
 	$cfg['site']['rel_path'] = N2F_REL_PATH;

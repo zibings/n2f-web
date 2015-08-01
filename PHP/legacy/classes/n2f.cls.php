@@ -211,12 +211,12 @@
 			}
 
 			// Make sure the extension exists in the filesystem
-			if (file_exists("{$this->cfg->site->rel_path}system/extensions/{$name}.ext.php")) {
+			if (file_exists("{$this->cfg->site->rel_path}extensions/{$name}.ext.php")) {
 				// Add the extension to the quick-list now to avoid recursion
 				$this->extensions[$name] = $name;
 
 				// Include the extension file and trigger event notification
-				include("{$this->cfg->site->rel_path}system/extensions/{$name}.ext.php");
+				include("{$this->cfg->site->rel_path}extensions/{$name}.ext.php");
 				$this->hitEvent(N2F_EVT_EXTENSION_LOADED, array(&$this, $name));
 
 				// If we're throwing notices, throw the notice

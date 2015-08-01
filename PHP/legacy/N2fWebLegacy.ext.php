@@ -165,7 +165,7 @@
 				$Dispatch->Consume();
 
 				return;
-			} else {
+			} else if (!($Dispatch instanceof N2f\WebDispatch)) {
 				$Sender->GetConsoleHelper()->PutLine();
 				$Sender->GetConsoleHelper()->PutLine("Invalid dispatch provided for n2f-web legacy.");
 				$Sender->GetConsoleHelper()->PutLine();
@@ -177,6 +177,19 @@
 
 			$Dispatch->Consume();
 
+			$ExtDir = $Sender->GetConfig()->ExtensionDirectory;
+
+			if (substr($ExtDir, 0, 1) == '~') {
+				$ExtDir = substr($ExtDir, 1);
+
+				if (substr($ExtDir, 0, 1) == '/' && substr(N2F_REL_DIR, -1) == '/') {
+					$ExtDir = substr($ExtDir, 1);
+				}
+			}
+
+			define('N2F_REL_PATH', N2F_REL_DIR . $ExtDir . 'N2fWebLegacy/');
+
+			require(N2F_REL_PATH . 'core.inc.php');
 			n2f_proc();
 
 			return;
