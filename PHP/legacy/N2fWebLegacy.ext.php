@@ -367,7 +367,87 @@
 
 					break;
 				case 'module':
-					
+					$Ch->Put("Creating '{$Params['name']}' module.. ");
+
+					$ModCopy = $Fh->CopyFolder($Cfg->ExtensionDirectory . 'N2fWebLegacy/templates/module/', "~modules/{$Params['name']}/");
+
+					if ($ModCopy->IsGud()) {
+						if ($DoVerbose) {
+							$Results = $ModCopy->GetResults();
+							$Ch->PutLine();
+
+							if (is_array($Results)) {
+								foreach (array_values($Results) as $Res) {
+									$Ch->PutLine("Created '" . $Res . "'");
+								}
+							} else {
+								$Ch->PutLine("Created '" . $Results . "'");
+							}
+						}
+
+						$PageContents = str_replace('%MODULE_NAME%', $Params['name'], $Fh->GetContents("~modules/{$Params['name']}/page.php"));
+						$TplContents = str_replace('%MODULE_NAME%', $Params['name'], $Fh->GetContents("~modules/{$Params['name']}/tpl/default/index.tpl"));
+
+						$PageWrite = $Fh->PutContents("~modules/{$Params['name']}/page.php", $PageContents);
+						$TplWrite = $Fh->PutContents("~modules/{$Params['name']}/tpl/default/index.tpl", $TplContents);
+
+						if ($PageWrite->IsGud() && $TplWrite->IsGud()) {
+							if ($DoVerbose) {
+								$Results = $PageWrite->GetResults();
+								$Ch->PutLine();
+
+								if (is_array($Results)) {
+									foreach (array_values($Results) as $Res) {
+										$Ch->PutLine("Wrote '" . $Res . "' bytes to disk");
+									}
+								} else {
+									$Ch->PutLine("Wrote '" . $Results . "' bytes to disk");
+								}
+
+								$Results = $TplWrite->GetResults();
+
+								if (is_array($Results)) {
+									foreach (array_values($Results) as $Res) {
+										$Ch->PutLine("Wrote '" . $Res . "' bytes to disk");
+									}
+								} else {
+									$Ch->PutLine("Wrote '" . $Results . "' bytes to disk");
+								}
+							}
+
+							$Ch->PutLine("Complete.");
+						} else {
+							if ($DoVerbose) {
+								$Ch->PutLine();
+
+								foreach (array_values($PageWrite->GetMessages()) as $Msg) {
+									$Ch->PutLine($Msg);
+								}
+
+								foreach (array_values($TplWrite->GetMessages()) as $Msg) {
+									$Ch->PutLine($Msg);
+								}
+							}
+
+							$Ch->PutLine("Failed.");
+							$Ch->PutLine();
+							$Ch->PutLine("Module files were copied, but configuration information could not be written.");
+							$Ch->PutLine();
+						}
+					} else {
+						if ($DoVerbose) {
+							$Ch->PutLine();
+
+							foreach (array_values($ModCopy->GetMessages()) as $Msg) {
+								$Ch->PutLine($Msg);
+							}
+						}
+
+						$Ch->PutLine("Failed.");
+						$Ch->PutLine();
+						$Ch->PutLine("Aborting configuration.");
+						$Ch->PutLine();
+					}
 
 					break;
 				default:
