@@ -55,7 +55,7 @@
 
 						if (is_array($Results)) {
 							foreach (array_values($Results) as $Res) {
-								$Ch->PutLine("Copied '" . $Res . "'");
+								$Ch->PutLine("Created '" . $Res . "'");
 							}
 						} else {
 							$Ch->PutLine("Created '" . $Results . "'");
@@ -93,7 +93,7 @@
 
 						if (is_array($Results)) {
 							foreach (array_values($Results) as $Res) {
-								$Ch->PutLine("Copied '" . $Res . "'");
+								$Ch->PutLine("Created '" . $Res . "'");
 							}
 						} else {
 							$Ch->PutLine("Created '" . $Results . "'");
@@ -208,18 +208,174 @@
 				return;
 			}
 
+			/** @var \N2f\N2f $Sender */
 			/** @var \N2f\GenerateDispatch $Dispatch */
 
-			$Fh = $Dispatch->GetFileHelper();
 			$Type = $Dispatch->GetEntityType();
 			$Params = $Dispatch->GetAssocParameters();
 
-			if (stripos($Type, 'N2fWebLegacy.') === false || !array_key_exists('name', $Params)) {
+			if (stripos($Type, 'n2fweblegacy:') === false || !array_key_exists('name', $Params)) {
 				return;
 			}
 
-			print_r($Params);
+			$DoVerbose = false;
+			$Cfg = $Sender->GetConfig();
+			$Fh = $Dispatch->GetFileHelper();
+			$Ch = $Sender->GetConsoleHelper();
+
+			$Ch->PutLine();
 			$Dispatch->Consume();
+			$Type = substr($Type, 13);
+
+			if ($Ch->HasArg('v') || $Ch->HasArg('verbose')) {
+				$DoVerbose = true;
+			}
+
+			switch ($Type) {
+				case 'extension':
+					if (!array_key_exists('key', $Params)) {
+						while (true) {
+							$Ch->Put("Enter the extension key: ");
+							$Key = $Ch->GetLine();
+
+							if (!empty($Key) && stripos($Key, ' ') === false) {
+								$Params['key'] = $Key;
+
+								break;
+							} else {
+								$Ch->PutLine("You must enter a valid extension key without spaces.");
+							}
+						}
+					}
+
+					if (!array_key_exists('version', $Params)) {
+						while (true) {
+							$Ch->Put("Enter extension version: ");
+							$Ver = $Ch->GetLine();
+
+							if (!empty($Ver)) {
+								$Params['version'] = $Ver;
+
+								break;
+							} else {
+								$Ch->PutLine("You must enter a valid extension version.");
+							}
+						}
+					}
+
+					if (!array_key_exists('author', $Params)) {
+						while (true) {
+							$Ch->Put("Enter extension author(s): ");
+							$Author = $Ch->GetLine();
+
+							if (!empty($Author)) {
+								$Params['author'] = $Author;
+
+								break;
+							} else {
+								$Ch->PutLine("You must enter a valid extension author.");
+							}
+						}
+					}
+
+					if (!array_key_exists('url', $Params)) {
+						while (true) {
+							$Ch->Put("Enter extension URL: ");
+							$Url = $Ch->GetLine();
+
+							if (!empty($Url)) {
+								$Params['url'] = $Url;
+
+								break;
+							} else {
+								$Ch->PutLine("You must enter a valid extension URL.");
+							}
+						}
+					}
+
+					$Ch->PutLine();
+					$Ch->Put("Creating extension.. ");
+					$ExtCopy = $Fh->CopyFile($Cfg->ExtensionDirectory . 'N2fWebLegacy/templates/extension/extension.ext.php', $Cfg->ExtensionDirectory . 'N2fWebLegacy/extensions/' . $Params['name'] . '.ext.php');
+
+					if ($ExtCopy->IsGud()) {
+						if ($DoVerbose) {
+							$Results = $ExtCopy->GetResults();
+							$Ch->PutLine();
+
+							if (is_array($Results)) {
+								foreach (array_values($Results) as $Res) {
+									$Ch->PutLine("Created '" . $Res . "'");
+								}
+							} else {
+								$Ch->PutLine("Created '" . $Results . "'");
+							}
+						}
+
+						$Contents = $Fh->GetContents($Cfg->ExtensionDirectory . 'N2fWebLegacy/extensions/' . $Params['name'] . '.ext.php');
+						$Contents = str_replace(
+							array(
+								'%EXT_KEY%',
+								'%EXT_NAME%',
+								'%EXT_VERSION%',
+								'%EXT_AUTHOR%',
+								'%EXT_URL%'
+							),
+							array(
+								$Params['key'],
+								$Params['name'],
+								$Params['version'],
+								$Params['author'],
+								$Params['url']
+							),
+							$Contents);
+						
+						$ExtWrite = $Fh->PutContents($Cfg->ExtensionDirectory . 'N2fWebLegacy/extensions/' . $Params['name'] . '.ext.php', $Contents);
+
+						if ($ExtWrite->IsGud()) {
+							$Ch->PutLine("Complete.");
+							$Ch->PutLine();
+							$Ch->PutLine("The '{$Params['name']}' extension must still be configured for use inside the config.inc.php file.");
+							$Ch->PutLine();
+						} else {
+							if ($DoVerbose) {
+								$Ch->PutLine();
+
+								foreach (array_values($ExtWrite->GetMessages()) as $Msg) {
+									$Ch->PutLine($Msg);
+								}
+							}
+
+							$Ch->PutLine("Failed.");
+							$Ch->PutLine();
+							$Ch->PutLine("Extension file created but configuration information could not be written.");
+							$Ch->PutLine();
+						}
+					} else {
+						if ($DoVerbose) {
+							$Ch->PutLine();
+
+							foreach (array_values($ExtCopy->GetMessages()) as $Msg) {
+								$Ch->PutLine($Msg);
+							}
+						}
+
+						$Ch->PutLine("Failed.");
+						$Ch->PutLine();
+						$Ch->PutLine("Aborting configuration.");
+						$Ch->PutLine();
+					}
+
+					break;
+				case 'module':
+					
+
+					break;
+				default:
+					$Ch->PutLine("Invalid generation type for n2f-web legacy extension.");
+					$Ch->PutLine();
+
+					return;
+			}
 
 			return;
 		}

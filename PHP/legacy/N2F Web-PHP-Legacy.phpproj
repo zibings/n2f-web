@@ -73,6 +73,7 @@
     <Compile Include="changelist.txt" />
     <Compile Include="credits.txt" />
     <Compile Include="license.txt" />
+    <Compile Include="templates\extension\extension.ext.php" />
     <Compile Include="templates\module\index.php" />
     <Compile Include="templates\module\page.php" />
   </ItemGroup>
