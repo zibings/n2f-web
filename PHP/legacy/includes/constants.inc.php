@@ -14,10 +14,6 @@
 	 * $Id: constants.inc.php 199 2012-07-10 02:18:52Z amale@EPSILON $
 	 */
 
-
-	// Main N2F Yverdon Constants
-	define('N2F_VERSION',							'0.8');
-
 	// Debug Level Constants
 	define('N2F_DEBUG_OFF',							0);
 	define('N2F_DEBUG_ERROR',						1);
