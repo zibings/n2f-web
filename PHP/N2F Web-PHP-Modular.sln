@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "N2F Web-PHP-Modular", "modular\N2F Web-PHP-Modular.phpproj", "{07B8C149-15CE-42C2-8F6B-2770A27CA179}"
+EndProject
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "N2F 2.0", "..\n2framework\PHP\N2F 2.0.phpproj", "{9E7E51D0-D71B-47B5-A649-C963C63513FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07B8C149-15CE-42C2-8F6B-2770A27CA179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B8C149-15CE-42C2-8F6B-2770A27CA179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B8C149-15CE-42C2-8F6B-2770A27CA179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B8C149-15CE-42C2-8F6B-2770A27CA179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E7E51D0-D71B-47B5-A649-C963C63513FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E7E51D0-D71B-47B5-A649-C963C63513FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E7E51D0-D71B-47B5-A649-C963C63513FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E7E51D0-D71B-47B5-A649-C963C63513FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

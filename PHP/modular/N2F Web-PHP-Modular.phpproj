@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>N2F_Web_PHP_Modular</Name>
+    <ProjectGuid>07b8c149-15ce-42c2-8f6b-2770a27ca179</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>N2F_Web_PHP_Modular</RootNamespace>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>N2F Web-PHP-Modular</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="index.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\n2framework\PHP\N2F 2.0.phpproj">
+      <Name>N2F 2.0</Name>
+      <Project>{9e7e51d0-d71b-47b5-a649-c963c63513fc}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

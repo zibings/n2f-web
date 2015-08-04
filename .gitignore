@@ -71,3 +71,6 @@ packages/
 
 #Test files
 *.testsettings
+
+# VS Folders
+.vs*
