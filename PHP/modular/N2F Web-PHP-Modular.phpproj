@@ -16,13 +16,16 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="index.php" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\n2framework\PHP\N2F 2.0.phpproj">
       <Name>N2F 2.0</Name>
       <Project>{9e7e51d0-d71b-47b5-a649-c963c63513fc}</Project>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="N2fWebModular.cfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="N2fWebModular.ext.php" />
   </ItemGroup>
 </Project>
