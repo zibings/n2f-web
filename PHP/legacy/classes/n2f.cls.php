@@ -511,6 +511,9 @@
 		 * @return null	Null value, no real return.
 		 */
 		protected function _initCore() {
+      // Send our content-type header because we're awesome
+			header('Content-Type: '.$this->cfg->content_type.'; charset='.$this->cfg->charset);
+
 			// Return just so we've returned
 			return(null);
 		}
