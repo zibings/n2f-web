@@ -26,6 +26,12 @@
     <Content Include="N2fWebModular.cfg" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Endpoint.base.php" />
     <Compile Include="N2fWebModular.ext.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Endpoints\" />
+    <Folder Include="Core\" />
+    <Folder Include="Templates\" />
   </ItemGroup>
 </Project>

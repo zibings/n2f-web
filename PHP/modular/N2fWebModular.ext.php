@@ -2,9 +2,9 @@
 
 	class N2fWebModular extends N2f\ExtensionBase {
 		public function Initialize(N2f\N2f &$N2f) {
-			$N2f->LinkConfigNode(new N2fWebLegacyConfigNode());
-			$N2f->LinkExecuteNode(new N2fWebLegacyExecuteNode());
-			$N2f->LinkGenerationNode(new N2fWebLegacyGenerateNode());
+			$N2f->LinkConfigNode(new N2fWebModularConfigNode());
+			$N2f->LinkExecuteNode(new N2fWebModularExecuteNode());
+			$N2f->LinkGenerationNode(new N2fWebModularGenerateNode());
 
 			return;
 		}
